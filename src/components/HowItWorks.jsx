@@ -1,224 +1,177 @@
 const steps = [
   {
-    number: "01",
     title: "Book a Service",
     description:
       "Customers select a service, choose a time slot, and confirm their booking.",
-    icon: "▣",
+    icon: "calendar",
     purple: true,
-    iconFirst: true,
+    iconPosition: "top",
   },
   {
-    number: "02",
     title: "Assign a Professional",
     description:
       "Manage service requests and assign the right professional for the job.",
-    icon: "♟",
+    icon: "user",
     purple: false,
-    iconFirst: false,
+    iconPosition: "bottom",
   },
   {
-    number: "03",
     title: "Complete the Service",
     description:
       "Providers deliver the service and update the booking status.",
-    icon: "🔧",
+    icon: "tool",
     purple: true,
-    iconFirst: true,
+    iconPosition: "top",
   },
   {
-    number: "04",
     title: "Track Your Business",
     description:
       "Monitor bookings, payments, and performance from your admin dashboard.",
-    icon: "▥",
+    icon: "chart",
     purple: false,
-    iconFirst: false,
+    iconPosition: "bottom",
   },
 ];
 
-const solutions = [
-  {
-    title: "Home Cleaning",
-    description:
-      "Manage cleaning bookings, schedules and service teams.",
-    icon: "🧹",
-    symbol: "♟",
-    bg: "bg-[#F6F0FC]",
-  },
-  {
-    title: "Electrical Services",
-    description:
-      "Coordinate electrical service requests, jobs and professionals.",
-    icon: "💡",
-    symbol: "ϟ",
-    bg: "bg-[#EFF7F3]",
-  },
-  {
-    title: "Plumbing",
-    description:
-      "Manage plumbing jobs, appointments and service professionals.",
-    icon: "🔧",
-    symbol: "🔧",
-    bg: "bg-[#FAF6F1]",
-  },
-];
+function StepIcon({ type }) {
+  const paths = {
+    calendar: (
+      <>
+        <rect x="4" y="5" width="16" height="16" rx="2.5" />
+        <path d="M8 3v4M16 3v4M4 10h16M9.5 15l2 2 3.5-3.5" />
+      </>
+    ),
+    user: (
+      <>
+        <circle cx="12" cy="8.5" r="3.2" />
+        <path d="M5.5 19.5c0-3.2 2.9-5.5 6.5-5.5s6.5 2.3 6.5 5.5" />
+      </>
+    ),
+    tool: (
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    ),
+    chart: (
+      <>
+        <path d="M6 19v-6" />
+        <path d="M12 19V7" />
+        <path d="M18 19v-9" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-[22px] h-[22px]"
+    >
+      {paths[type]}
+    </svg>
+  );
+}
 
 function HowItWorks() {
   return (
-    <section className="w-full bg-white px-5 py-16">
+    <section
+      id="how-it-works"
+      className="w-full bg-white px-6 md:px-10 lg:px-[88px] pt-14 md:pt-16 pb-8 md:pb-10"
+    >
       <div className="max-w-[1198px] mx-auto">
-
-        {/* Heading */}
-        <div className="text-center mb-10">
-          <p className="font-['Sora'] text-[13px] tracking-[4px] text-[#A5A5A5]">
+        {/* HEADING */}
+        <div className="text-center mb-10 md:mb-12">
+          <p className="font-['Sora'] text-[10px] md:text-[11px] tracking-[4px] text-[#A49AAE] uppercase mb-2.5">
             HOW IT WORKS
           </p>
 
-          <h2 className="font-['Sora'] font-bold text-[28px] md:text-[34px] leading-[1.1] mt-3 text-[#191919]">
+          <h2 className="font-['Sora'] font-bold text-[26px] md:text-[34px] leading-[1.2] text-[#191919]">
             From Booking to Completion,
-            <br />
-            <span className="text-[#8624DD]">Made Simple</span>
+            <span className="block text-[#8624DD]">Made Simple</span>
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-5">
-
-          {/* Connecting line */}
+        {/* STEPS GRID */}
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          {/* CONNECTING WAVE CURVE (DESKTOP) */}
           <svg
-            className="hidden lg:block absolute top-[75px] left-0 w-full h-[100px] pointer-events-none"
-            viewBox="0 0 1198 100"
+            aria-hidden="true"
+            className="hidden lg:block absolute top-[18px] -left-3 w-[calc(100%+24px)] h-[126px] pointer-events-none"
+            viewBox="0 0 1100 126"
+            fill="none"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient
+                id="howItWorksWave"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#EFE4FC" stopOpacity="0.4" />
+                <stop offset="15%" stopColor="#EFE4FC" stopOpacity="0.95" />
+                <stop offset="50%" stopColor="#EFE4FC" stopOpacity="0.95" />
+                <stop offset="85%" stopColor="#EFE4FC" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#EFE4FC" stopOpacity="0.4" />
+              </linearGradient>
+            </defs>
             <path
-              d="M10 70 C150 35 200 20 300 45 S500 100 600 60 S800 25 900 45 S1080 90 1188 65"
-              stroke="#F2E5FF"
-              strokeWidth="15"
-              fill="none"
+              d="M 8 106 C 132 82, 224 28, 325 28 C 426 28, 515 106, 605 106 C 695 106, 785 28, 875 28 C 955 28, 1022 74, 1092 106"
+              stroke="url(#howItWorksWave)"
+              strokeWidth="12"
               strokeLinecap="round"
             />
           </svg>
 
           {steps.map((step) => (
             <div
-              key={step.number}
-              className="relative z-10 flex flex-col items-start"
+              key={step.title}
+              className="relative z-10 flex flex-col justify-between items-start min-h-[146px]"
             >
-              {/* Icon first for alternating layout */}
-              {step.iconFirst && (
+              {/* TOP ICON (Steps 1 & 3) */}
+              {step.iconPosition === "top" && (
                 <div
-                  className={`w-[46px] h-[46px] rounded-full flex items-center justify-center text-white text-[22px] mb-4 ${
+                  className={`w-[50px] h-[50px] rounded-full flex items-center justify-center text-white mb-4 shadow-[0_8px_20px_rgba(0,0,0,0.08)] ${
                     step.purple ? "bg-[#8624DD]" : "bg-[#191919]"
                   }`}
                 >
-                  {step.icon}
+                  <StepIcon type={step.icon} />
                 </div>
               )}
 
-              <h3 className="font-['Sora'] font-semibold text-[13px] text-[#202020]">
-                {step.title}
-              </h3>
+              {/* TRANSPARENT TEXT BLOCK OVER WAVE */}
+              <div className="bg-transparent py-0.5">
+                <h3 className="font-['Sora'] font-bold text-[14px] md:text-[15px] leading-[20px] text-[#202020]">
+                  {step.title}
+                </h3>
 
-              <p className="font-['Sora'] text-[11px] leading-[15px] text-[#777777] max-w-[180px] mt-1">
-                {step.description}
-              </p>
-
-              {!step.iconFirst && (
-                <div
-                  className={`w-[46px] h-[46px] rounded-full flex items-center justify-center text-white text-[22px] mt-4 ${
-                    step.purple ? "bg-[#8624DD]" : "bg-[#191919]"
-                  }`}
-                >
-                  {step.icon}
-                </div>
-              )}
-            </div>
-          ))}
-
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-[#EEEEEE] mt-16 mb-10" />
-
-      </div>
-    </section>
-  );
-}
-
-function OurSolutions() {
-  return (
-    <section className="w-full bg-white px-5 pb-16">
-      <div className="max-w-[1198px] mx-auto">
-
-        {/* Heading */}
-        <div className="text-center mb-8">
-          <p className="font-['Sora'] text-[13px] tracking-[4px] text-[#A5A5A5]">
-            OUR SOLUTIONS
-          </p>
-
-          <h2 className="font-['Sora'] font-bold text-[28px] md:text-[34px] leading-tight mt-3 text-[#191919]">
-            One Platform.{" "}
-            <span className="text-[#8624DD]">
-              Every Home Service.
-            </span>
-          </h2>
-
-          <p className="font-['Sora'] text-[14px] md:text-[15px] leading-[22px] text-[#777777] mt-2 max-w-[600px] mx-auto">
-            Manage diverse home services through one customizable platform
-            built to simplify bookings and service operations.
-          </p>
-        </div>
-
-        {/* Solution Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-          {solutions.map((solution) => (
-            <div
-              key={solution.title}
-              className={`${solution.bg} rounded-[15px] p-5 min-h-[260px]`}
-            >
-              {/* Illustration placeholder */}
-              <div className="relative h-[125px] flex items-center justify-center">
-                <div className="absolute w-[110px] h-[110px] rounded-full bg-white/70" />
-
-                <span className="relative text-[76px]">
-                  {solution.icon}
-                </span>
-
-                <span className="absolute bottom-3 left-[22%] w-[48px] h-[48px] rounded-full bg-white shadow-sm flex items-center justify-center text-[24px] text-[#8624DD]">
-                  {solution.symbol}
-                </span>
+                <p className="font-['Sora'] text-[11px] leading-[17px] text-[#77717D] mt-1.5 max-w-[215px]">
+                  {step.description}
+                </p>
               </div>
 
-              {/* Card content */}
-              <h3 className="font-['Sora'] font-semibold text-[13px] text-[#202020] mt-2">
-                {solution.title}
-              </h3>
-
-              <p className="font-['Sora'] text-[11px] leading-[15px] text-[#777777] mt-1">
-                {solution.description}
-              </p>
-
-              <button className="font-['Sora'] text-[10px] font-medium text-[#8624DD] mt-2">
-                Explore solution ↗
-              </button>
+              {/* BOTTOM ICON (Steps 2 & 4) */}
+              {step.iconPosition === "bottom" && (
+                <div
+                  className={`w-[50px] h-[50px] rounded-full flex items-center justify-center text-white mt-4 shadow-[0_8px_20px_rgba(0,0,0,0.08)] ${
+                    step.purple ? "bg-[#8624DD]" : "bg-[#191919]"
+                  }`}
+                >
+                  <StepIcon type={step.icon} />
+                </div>
+              )}
             </div>
           ))}
-
         </div>
+
+        {/* BOTTOM DIVIDER */}
+        <div className="border-t border-[#EFECEF] mt-10" />
       </div>
     </section>
   );
 }
 
-function HowItWorksAndSolutions() {
-  return (
-    <>
-      <HowItWorks />
-      <OurSolutions />
-    </>
-  );
-}
-
-export default HowItWorksAndSolutions;
+export default HowItWorks;
